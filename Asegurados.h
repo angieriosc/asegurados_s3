@@ -15,8 +15,8 @@ class Asegurado{
 
 public: 
   //Constuctor inicial
-  Asegurado(){};
-  Asegurado(const string& n, int e, int f) : nombre(n), edad(e), folio(f) {}
+  Asegurado();
+  Asegurado(string n, int e, int f);
   // Metodos miembros de la clase
   int get_edad();
   string get_nombre();
@@ -24,10 +24,27 @@ public:
   void set_folio(int);
   void set_edad(int);
   string to_str();
+  bool compararPorNombre(const Asegurado& a, const Asegurado& b);
+  bool compararPorEdad(const Asegurado& a, const Asegurado& b);
+  bool compararPorFolio(const Asegurado& a, const Asegurado& b);
   int edad;
   string nombre;
   int folio;
 };
+Asegurado::Asegurado(){
+    nombre="";
+    edad=0;
+    folio=00000;
+}
+
+
+Asegurado::Asegurado(string n, int e, int f){
+
+    nombre=n;
+    edad=e;
+    folio=f;
+}
+
 
 //Getter de edad, folio y nombre
 /**
@@ -79,9 +96,20 @@ void Asegurado:: set_edad(int ed){
 string Asegurado::to_str(){
 
     stringstream aux;
-    aux << " Nombre del Asegurado " << nombre << " Edad:  "<< edad << " Folio:  "<< folio <<  "\n";
+    aux << nombre << "           " << edad << "     " << folio ;
     return aux.str();
 }
 
+bool compararPorEdad(Asegurado* a, Asegurado* b) {
+    return a->get_edad() < b->get_edad();
+}
+
+bool compararPorFolio(Asegurado* a, Asegurado* b) {
+    return a->get_folio() < b->get_folio();
+}
+
+bool compararPorNombre(Asegurado* a, Asegurado* b) {
+    return a->get_nombre() < b->get_nombre();
+}
 
 #endif // ASEGURADOS_H_
