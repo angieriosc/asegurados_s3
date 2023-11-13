@@ -31,6 +31,7 @@ public:
   string nombre;
   int folio;
 };
+
 Asegurado::Asegurado(){
     nombre="";
     edad=0;
@@ -94,7 +95,6 @@ void Asegurado:: set_edad(int ed){
  * @return cadena convertida en string
 */
 string Asegurado::to_str(){
-
     stringstream aux;
     aux << nombre << "           " << edad << "     " << folio ;
     return aux.str();

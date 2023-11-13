@@ -8,33 +8,43 @@
 #include <locale>
 #include <codecvt>
 #include <vector>
-#include "asegurados.csv"
+#include <map>
+#include <algorithm>
+
 using namespace std;
 
-//Constante para la creación de arreglos con espacio de sobra.
-const int MAX = 100;
-//Creación de clase Inventario
+
 class BaseDatos{
   protected:
-    //Variable de instancia (lista para guardar objetos)
-    Asegurado asegurados[MAX];
+    //Vector para guardar apuntadores
+    vector<Asegurado*> asegurados;
+    map<string, int> asegurado_nom;
+    map<int,string> asegurado_fol;
 
     //Declaro las variables de instancia
     private:
     int iasegurados, num2;
     float nuevo_edad;  
+    string nombre,str;
+    int edad;
+    int folio, n;
 
     
   public: 
     //Métodos
     BaseDatos();//Constructor
-
-    void importar_asegurados();
-    void mostrar_asegurados();
-    void agrega_asegurado(string, int, int);
-    void editar_edad(string, int);
-
+    ~BaseDatos(); //Destructor
+    void importar_asegurados(string); //Importa y crea objetos de clase asegurados desde un archivo .txt
+    void mostrar_asegurados(); //Despliega todos los asegurados 
+    void compara_alf(); //Ordena a los asegurados por orden alfábetico
+    void compara_ed();  //Ordena a los asegurados por edad (menor a mayor)
+    void compara_fol();  //Ordena a los asegurados por folio (menor a mayor)
+    void agrega_asegurado(string, int, int); //Crea nuevo objeto tipo asegurado
+    void editar_edad(string, int); //Modifica la edad de un asegurado
+    void buscar_folio(int);
+    void buscar_nombre(string);
 };
+
 /**
  * Constructor por default
  *
@@ -44,77 +54,99 @@ class BaseDatos{
 BaseDatos::BaseDatos(){
 }
 
-void BaseDatos::importar_asegurados() {
-    vector<Asegurado> asegurados;
+BaseDatos::~BaseDatos() {
+    // Liberar memoria dinámica asociada con objetos Asegurado
+    for (Asegurado* ptr : asegurados) {
+        delete ptr;
+    }
 
-    ifstream archivo("asegurados1.csv");
+    // Limpiar el vector asegurados
+    asegurados.clear();
+}
+
+void BaseDatos::importar_asegurados(string name) {
+    ifstream archivo(name);
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo." << endl;
         return;
     }
 
-    string nombre;
-    int edad;
-    int folio;
-
-    while (archivo >> nombre >> edad >> folio) {
-        asegurados.push_back(Asegurado(nombre, edad, folio));
+    archivo >> n;
+    iasegurados=0;
+    while (iasegurados<n) {
+        archivo >> nombre;
+        archivo >> edad;
+        archivo>> folio; 
+        Asegurado* asegurado = new Asegurado(nombre, edad, folio);
+        asegurados.push_back(asegurado);
+        asegurado_nom[nombre] = folio;
+        asegurado_fol[folio] = nombre;
+        iasegurados++;
     }
 
     archivo.close();
 
-    // Ahora, los datos están almacenados en el vector 'asegurados'
-    // Puedes acceder a ellos como desees, por ejemplo, imprimirlos:
-    for (const Asegurado& asegurado : asegurados) {
-        cout << "Nombre: " << asegurado.nombre << ", Edad: " << asegurado.edad << ", Folio: " << asegurado.folio << endl;
-    }
 }
 
-/**
- * Utliza los arreglos de tipo Comida, Postre y bebida.
- * Muestra el menu con los costos por medio de getters y un ciclo
- * for que va recorriendo cada elemento de los arreglos y lo imprime
- *
- * @param
- * @return
-*/
 void BaseDatos::mostrar_asegurados(){
-    cout<<"\n";
-    cout<<"Nombre              Edad     Folio \n";
-    cout<<"\n";
-    for(int i = 0 ;i<= iasegurados-1; i++){
-      cout  << asegurados[i].get_nombre()<<asegurados[i].get_edad()<<asegurados[i].get_folio()<<"\n";
-    }
+  ofstream outputFile("lista_asegurados.txt");
+  outputFile << str;
+  outputFile <<" Nombre del Asegurado      " << "   Edad  "<< "   Folio "<< "\n";
+  outputFile <<"\n";
+  for(int i = 0 ;i<= iasegurados-1; i++){
+      outputFile << i+1 << ".-" << asegurados[i]->to_str()<<"\n";
+      outputFile <<"\n";
+  }
+  outputFile.close();  
  }
-/*
 
-/**
- * Utliza los arreglos de tipo Comida, Postre y bebida.
- * Por medio de un ciclo for se llama a la función get_nombre()
-  set_costo();
- * @param string:nombre_c, float nuevo_costo
- * @return
-*/
-void BaseDatos::editar_edad(string nombre_c, int nuevo_edad){
-   for(int i = 0 ;i< iasegurados-1; i++){
-     if (asegurados[i].get_nombre()==nombre_c){
-      asegurados[i].set_edad(nuevo_edad);
+
+void BaseDatos::editar_edad(string nombre_c, int nuevo_edad) {
+    for (int i = 0; i < asegurados.size(); i++) {
+        if (asegurados[i]->get_nombre() == nombre_c) {
+            asegurados[i]->set_edad(nuevo_edad);
+            break;  // Salir del bucle después de encontrar una coincidencia
+        }
     }
+}
 
-}
-}
-/**
- * Utiliza arreglo de Comidas y su ultimo indice.
- * Recibe el nombre, la cantidad, y el costo.
- * El metodo crea el objeto Comida y lo agrega al arreglo
- *
- * @param string:nombre, int:cantidad, float;costo
- * @return
- */
-void BaseDatos::agrega_asegurado(string nombre,int edad, int folio){
-    asegurados[iasegurados] = Asegurado (nombre, edad, folio);
+void BaseDatos::agrega_asegurado(string nombre, int edad, int folio) {
+    Asegurado* nuevoAsegurado = new Asegurado(nombre, edad, folio);
+    asegurados.push_back(nuevoAsegurado);
     iasegurados += 1;
 }
 
 
+void BaseDatos::compara_alf(){
+  // O(log n) 
+  sort(asegurados.begin(), asegurados.end(),compararPorNombre);
+  str = "Asegurados ordenados por orden alfabetico:\n";
+  mostrar_asegurados();
+  cout << "Archivo creado";
+}
+void BaseDatos::compara_ed(){
+  // O(log n) 
+  sort(asegurados.begin(), asegurados.end(), compararPorEdad);
+  str = "Asegurados ordenados por edad:\n";
+  mostrar_asegurados();
+  cout << "Archivo creado";
+}
+void BaseDatos::compara_fol(){
+  // O(log n) 
+  sort(asegurados.begin(), asegurados.end(), compararPorFolio);
+  str = "Asegurados ordenados por Folio:\n";
+  mostrar_asegurados();
+  cout << "Archivo creado";
+}
+
+//Busqueda de objetos a través del uso de mapas
+void BaseDatos::buscar_folio(int f){
+  string name = asegurado_fol[f];
+  cout << "Nombre del asegurado:   " << name << "\n Numero de folio:  " << f;
+}
+
+void BaseDatos::buscar_nombre(string n){
+  int foli = asegurado_nom[n];
+  cout << "Nombre del asegurado:   " << n << "\n Numero de folio:   " << foli;
+}
 #endif // BASEDATOS_H_
