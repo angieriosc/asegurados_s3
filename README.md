@@ -1,6 +1,6 @@
 # Programación de estructuras de datos y algoritmos fundamentales (Gpo 602) - Evidencia 1
 Angélica Ríos Cuentas A01705651
-Este proyecto está hecho para mostrar los conocimientos adqueridos en la clase de  Programación de estructuras de datos y algoritmos fundamentales . 
+Este proyecto está hecho para mostrar los conocimientos adqueridos en la clase de  Programación de estructuras de datos y algoritmos fundamentales. 
 
 ## Contexto
 
