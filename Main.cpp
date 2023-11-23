@@ -66,7 +66,7 @@ int main(){
   
 //Ciclo while que permite que el usuario continue en el programa hasta que elija la opción de salir
   while (ban==1){
-    basedatos.importar_asegurados();
+    basedatos.importar_asegurados("asegurados");
   //Impresion de menu
   	menu();
   //Permite al usuario ingresar una opción
