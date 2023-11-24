@@ -54,7 +54,7 @@ funcion de inserción: O(n) uso un ciclo for.
 
 #### ordenamiento de medicinas
 
-ordenamiento con sort: ...
+ordenamiento con sort c++: El sort de C++ muestra una complejudad de O(N·log(N)) 
 
 ## SICT0303B: Implementa acciones científicas 
 
