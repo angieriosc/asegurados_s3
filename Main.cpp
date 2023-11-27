@@ -55,6 +55,7 @@ int validar_opcion(int opcion){
 //Se crean objetos iniciales
 int main(){
   BaseDatos basedatos;
+  basedatos.importar_asegurados("asegurados.txt");
 
 //Declaración de variables
   int opcion,opcion_a;
@@ -66,7 +67,6 @@ int main(){
   
 //Ciclo while que permite que el usuario continue en el programa hasta que elija la opción de salir
   while (ban==1){
-    basedatos.importar_asegurados("asegurados.txt");
   //Impresion de menu
   	menu();
   //Permite al usuario ingresar una opción
@@ -74,7 +74,10 @@ int main(){
     opcion = validar_opcion(opcion);
   	//Caso 1 manda a llamar la funcion que se encuentra en inventario, para mostrar el menu
     if (opcion==1){
-      basedatos.mostrar_asegurados();
+      string archivo_n;
+      cout << "nombre de tu archivo:  ";
+      cin >> archivo_n;
+      basedatos.mostrar_asegurados(archivo_n);
     }  
 
   /**

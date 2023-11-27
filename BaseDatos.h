@@ -1,3 +1,4 @@
+
 #ifndef BASEDATOS_H_
 #define BASEDATOS_H_
 
@@ -33,7 +34,7 @@ class BaseDatos{
     BaseDatos();//Constructor
     ~BaseDatos(); //Destructor
     void importar_asegurados(string); //Importa y crea objetos de clase asegurados desde un archivo .txt
-    void mostrar_asegurados(); //Despliega todos los asegurados 
+    void mostrar_asegurados(string); //Despliega todos los asegurados 
     void compara_alf(); //Ordena a los asegurados por orden alfábetico
     void compara_ed();  //Ordena a los asegurados por edad (menor a mayor)
     void compara_fol();  //Ordena a los asegurados por folio (menor a mayor)
@@ -86,8 +87,9 @@ void BaseDatos::importar_asegurados(string name) {
 
 }
 
-void BaseDatos::mostrar_asegurados(){
-  ofstream outputFile("lista_asegurados.txt");
+void BaseDatos::mostrar_asegurados(string name){
+  string nombre= name + ".txt";
+  ofstream outputFile(nombre);
   outputFile << str;
   outputFile <<" Nombre del Asegurado      " << "   Edad  "<< "   Folio "<< "\n";
   outputFile <<"\n";
@@ -95,7 +97,11 @@ void BaseDatos::mostrar_asegurados(){
       outputFile << i+1 << ".-" << asegurados[i]->get_nombre() <<"    "<< asegurados[i]->get_edad() << "    " <<asegurados[i]->get_folio() <<"\n";
       outputFile <<"\n";
   }
-  outputFile.close();  
+  outputFile.close(); 
+  for(int i = 0 ;i<= iasegurados-1; i++){
+    cout << i+1 << ".-" << asegurados[i]->get_nombre() <<"    "<< asegurados[i]->get_edad() << "    " <<asegurados[i]->get_folio() <<"\n";
+    cout <<"\n";
+  } 
  }
 
 
@@ -117,19 +123,27 @@ void BaseDatos::agrega_asegurado(string nombre, int edad, int folio) {
 
 void BaseDatos::compara_alf(){
   // O(log n) 
+  string archivo_n;
+  cout << "nombre de tu archivo:  ";
+  cin >> archivo_n;
   sort(asegurados.begin(), asegurados.end(), compararPorNombre);
-  mostrar_asegurados();
+  mostrar_asegurados(archivo_n);
 }
 void BaseDatos::compara_ed(){
   // O(log n) 
+  string archivo_n;
+  cout << "nombre de tu archivo:  ";
+  cin >> archivo_n;
   sort(asegurados.begin(), asegurados.end(), compararPorEdad);
-  mostrar_asegurados();
+  mostrar_asegurados(archivo_n);
 }
 void BaseDatos::compara_fol(){
   // O(log n) 
+  string archivo_n;
+  cout << "nombre de tu archivo:  ";
+  cin >> archivo_n;
   sort(asegurados.begin(), asegurados.end(), compararPorFolio);
-  mostrar_asegurados();
-  cout << "Archivo creado";
+  mostrar_asegurados(archivo_n);
 }
 
 //Busqueda de objetos a través del uso de mapas
