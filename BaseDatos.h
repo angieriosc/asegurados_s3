@@ -5,8 +5,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <locale>
-#include <codecvt>
 #include <vector>
 #include <map>
 #include <algorithm>
@@ -94,7 +92,7 @@ void BaseDatos::mostrar_asegurados(){
   outputFile <<" Nombre del Asegurado      " << "   Edad  "<< "   Folio "<< "\n";
   outputFile <<"\n";
   for(int i = 0 ;i<= iasegurados-1; i++){
-      outputFile << i+1 << ".-" << asegurados[i]->to_str()<<"\n";
+      outputFile << i+1 << ".-" << asegurados[i]->get_nombre() <<"    "<< asegurados[i]->get_edad() << "    " <<asegurados[i]->get_folio() <<"\n";
       outputFile <<"\n";
   }
   outputFile.close();  
@@ -119,22 +117,17 @@ void BaseDatos::agrega_asegurado(string nombre, int edad, int folio) {
 
 void BaseDatos::compara_alf(){
   // O(log n) 
-  sort(asegurados.begin(), asegurados.end(),compararPorNombre);
-  str = "Asegurados ordenados por orden alfabetico:\n";
+  sort(asegurados.begin(), asegurados.end(), compararPorNombre);
   mostrar_asegurados();
-  cout << "Archivo creado";
 }
 void BaseDatos::compara_ed(){
   // O(log n) 
   sort(asegurados.begin(), asegurados.end(), compararPorEdad);
-  str = "Asegurados ordenados por edad:\n";
   mostrar_asegurados();
-  cout << "Archivo creado";
 }
 void BaseDatos::compara_fol(){
   // O(log n) 
   sort(asegurados.begin(), asegurados.end(), compararPorFolio);
-  str = "Asegurados ordenados por Folio:\n";
   mostrar_asegurados();
   cout << "Archivo creado";
 }

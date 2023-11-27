@@ -45,7 +45,7 @@ void menu(){
  * @return opcion
 */
 int validar_opcion(int opcion){
-  while (1>opcion||opcion>8){
+  while (1>opcion||opcion>9){
     cout << "Ingresa respuesta valida: ";
     cin >> opcion;
   }
@@ -66,7 +66,7 @@ int main(){
   
 //Ciclo while que permite que el usuario continue en el programa hasta que elija la opción de salir
   while (ban==1){
-    basedatos.importar_asegurados("asegurados");
+    basedatos.importar_asegurados("asegurados.txt");
   //Impresion de menu
   	menu();
   //Permite al usuario ingresar una opción
@@ -75,7 +75,6 @@ int main(){
   	//Caso 1 manda a llamar la funcion que se encuentra en inventario, para mostrar el menu
     if (opcion==1){
       basedatos.mostrar_asegurados();
-
     }  
 
   /**

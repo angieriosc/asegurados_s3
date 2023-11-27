@@ -23,7 +23,6 @@ public:
   int get_folio();
   void set_folio(int);
   void set_edad(int);
-  string to_str();
   bool compararPorNombre(const Asegurado& a, const Asegurado& b);
   bool compararPorEdad(const Asegurado& a, const Asegurado& b);
   bool compararPorFolio(const Asegurado& a, const Asegurado& b);
@@ -94,12 +93,6 @@ void Asegurado:: set_edad(int ed){
  * @param 
  * @return cadena convertida en string
 */
-string Asegurado::to_str(){
-    stringstream aux;
-    aux << nombre << "           " << edad << "     " << folio ;
-    return aux.str();
-}
-
 bool compararPorEdad(Asegurado* a, Asegurado* b) {
     return a->get_edad() < b->get_edad();
 }
@@ -111,5 +104,6 @@ bool compararPorFolio(Asegurado* a, Asegurado* b) {
 bool compararPorNombre(Asegurado* a, Asegurado* b) {
     return a->get_nombre() < b->get_nombre();
 }
+
 
 #endif // ASEGURADOS_H_
