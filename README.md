@@ -15,7 +15,7 @@ Adicionalmente incluyo las funciones para registrar nuevos asegurados y permite 
 ### Selecciona y usa una estructura lineal adecuada al problema
 
 Uso un vector para guardar los apuntadores de los objetos de la clase asegurados con esto puedo realizar las funciones de agregar asegurados, de ordenarlos y de imprimirlos, esto me ayuda a modificar el vector dependiendo del tipo de ordenamiento. Esto se muestra en el código en las funciones mostrar_asegurados, agrega_asegurado, compara_alf, compara_ed y compara_fol, 
-que se encuentran en el archivo BaseDatos.h en las líneas 91, 113, 120, 127 y 134 respectivamente.
+que se encuentran en el archivo BaseDatos.h en las líneas 91, 113, 120, 127 y 134 respectivamente. Implemente el uso de mapas para guardar valores de nombre y folio, esto para agilizar el metódo de busqueda estos se encuentran en el archivo BaseDatos.h en las líneas 20,21,81,82,150 y 155.
 
 
 ### Selecciona un algoritmo de ordenamiento adecuado al problema
@@ -42,7 +42,7 @@ funcion de inserción: O(n) uso un ciclo for.
 
 ordenamiento con sort c++: El sort de C++ muestra una complejudad de O(N·log(N)) 
 
-#### Funciones Menú
+#### Funciones Menú (main)
 ##### Importar_asegurados (Lectura desde Archivo):
 Complejidad Temporal: O(n) (donde n es el número de asegurados en el archivo)
 Justificación: Lee cada línea del archivo una vez y crea objetos Asegurado, agregándolos al vector y a los mapas.
@@ -58,6 +58,18 @@ Justificación: Busca el asegurado por nombre y modifica su edad.
 ##### Agrega_asegurado:
 Complejidad Temporal: O(1) (agrega un elemento al final del vector)
 Justificación: Agrega un nuevo asegurado al vector.
+
+##### Ordenamiento por Nombre (compara_alf):
+Complejidad Temporal: O(n log n) (donde n es el número de asegurados)
+Justificación: Utiliza el algoritmo de ordenamiento rápido (sort) de la STL de C++, cuya complejidad promedio es O(n log n).
+
+##### Ordenamiento por Edad (compara_ed):
+Complejidad Temporal: O(n log n)
+Justificación: También utiliza el algoritmo de ordenamiento rápido (sort), cuya complejidad promedio es O(n log n).
+
+##### Ordenamiento por Folio (compara_fol):
+Complejidad Temporal: O(n log n)
+Justificación: Igualmente, utiliza el algoritmo de ordenamiento rápido (sort), con complejidad promedio O(n log n).
 
 ##### Buscar_folio:
 Complejidad Temporal: O(1) (acceso directo a través del mapa)
