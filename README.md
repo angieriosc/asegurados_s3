@@ -10,13 +10,6 @@ Los agentes de seguros necesitan tener gestión de los datos de sus asegurados. 
 El programa permite importar los datos de los asegurados desde un archivo txt, ordena los datos por orden alfabético, o edad o número de folio.
 Adicionalmente incluyo las funciones para registrar nuevos asegurados y permite buscar asegurados con su número de folio o con su nombre completo.
 
-## Correciones 
-Para este programa se relizaron las siguientes correcciones:
-
-1.- Se implemento el uso de maps
-2.- Se implementaron las funciones para buscar
-3.- Se mejoró el Readme
-
 ## SICT0302B: Toma decisiones 
 
 ### Selecciona y usa una estructura lineal adecuada al problema
@@ -33,42 +26,63 @@ Use este sort porque es rápido en la mayoría de los casos y porque me permite 
 
 ## SICT0301B: Evalúa los componentes
 
-### Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa,
-
-Todavia no estan terminados mis casos de prueba pero este se encontrara en el archivo test.cpp donde se prueban las funciones de: 
-- ordenamiento sobre el vector de asegurados
-- busqueda con el uso de maps
-respectivamente.
-
 ### Hace un análisis de complejidad correcto y completo para todo el programa y sus compenetes,
-
-#### vector asegurados
+#### Estructura de datos
+##### vector asegurados
 
 función de acceso por valor: O(n) por que para llegar a el aseguradop tengo que recorrer el vector y comparar cada valor.
 funcion de inserción: O(1) siempre uso push back.
 
-#### mapa asegurados
+##### mapa asegurados_nom y asegurados_fol
 
 función de acceso por valor: O(1) para llegar a el solo necesito el key value
 funcion de inserción: O(n) uso un ciclo for.
 
-#### ordenamiento de medicinas
+#### Ordenamiento dentro del programa
 
 ordenamiento con sort c++: El sort de C++ muestra una complejudad de O(N·log(N)) 
 
+#### Funciones Menú
+##### Importar_asegurados (Lectura desde Archivo):
+Complejidad Temporal: O(n) (donde n es el número de asegurados en el archivo)
+Justificación: Lee cada línea del archivo una vez y crea objetos Asegurado, agregándolos al vector y a los mapas.
+
+##### Mostrar_asegurados:
+Complejidad Temporal: O(n) (recorre el vector de asegurados una vez)
+Justificación: Muestra los asegurados en el formato deseado.
+
+##### Editar_edad:
+Complejidad Temporal: O(n) (recorre el vector de asegurados una vez en el peor caso)
+Justificación: Busca el asegurado por nombre y modifica su edad.
+
+##### Agrega_asegurado:
+Complejidad Temporal: O(1) (agrega un elemento al final del vector)
+Justificación: Agrega un nuevo asegurado al vector.
+
+##### Buscar_folio:
+Complejidad Temporal: O(1) (acceso directo a través del mapa)
+Justificación: Busca el nombre de un asegurado por su folio.
+
+##### Buscar_nombre:
+Complejidad Temporal: O(1)
+Justificación: Busca el folio de un asegurado por su nombre.
+
 ## SICT0303B: Implementa acciones científicas 
 
-### Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
+###### Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
 
 El programa tiene la opción de buscar asegurados por su número de folio direcamente en el mapa (opción 7 en el menú)
 El programa tiene la opción de buscar asegurados por nombre direcamente en el mapa (opción 8 en el menú)
 El programa genera archivos ordenados por nombre, edad o folio (opción 4, 5 y 6 en el menú)
 
 
-### Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa. Usar de manera
+#### Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa. Usar de manera
 
 Los asegurados están registrados en el archivo asegurados.txt de donde se leen al iniciar el programa.
 
-### Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa. 
+#### Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa. 
 
-Las asegurados se  guardan al en el archivo lista_asegurados.txt, con las funciones de sorts.
+Las asegurados se guardan al en archivos .txt con el nombre que ingreso el usuario.
+
+## Complejidad Final del Programa
+La complejidad del programa está dominada principalmente por las operaciones de lectura y escritura en archivos y por la ordenación de los asegurados. En general, se puede decir que la complejidad total es O(n log n), donde n es el número total de asegurados. Las operaciones individuales como la edición de edad, búsqueda por folio o nombre tienen complejidades más bajas, contribuyendo menos al tiempo total de ejecución.
