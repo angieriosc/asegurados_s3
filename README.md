@@ -26,8 +26,8 @@ Use este sort porque es rápido en la mayoría de los casos y porque me permite 
 
 ## SICT0301B: Evalúa los componentes
 
-### Hace un análisis de complejidad correcto y completo para todo el programa y sus compenetes,
-#### Estructura de datos
+### Análisis de complejidad correcto y completo para todo el programa y sus compenetes,
+### Estructura de datos
 ##### vector asegurados
 
 función de acceso por valor: O(n) por que para llegar a el aseguradop tengo que recorrer el vector y comparar cada valor.
@@ -42,7 +42,7 @@ funcion de inserción: O(n) uso un ciclo for.
 
 ordenamiento con sort c++: El sort de C++ muestra una complejudad de O(N·log(N)) 
 
-#### Funciones Menú (main)
+### Funciones Menú (main)
 ##### Importar_asegurados (Lectura desde Archivo):
 Complejidad Temporal: O(n) (donde n es el número de asegurados en el archivo)
 Justificación: Lee cada línea del archivo una vez y crea objetos Asegurado, agregándolos al vector y a los mapas.
@@ -81,18 +81,18 @@ Justificación: Busca el folio de un asegurado por su nombre.
 
 ## SICT0303B: Implementa acciones científicas 
 
-###### Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
+### Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa.
 
 El programa tiene la opción de buscar asegurados por su número de folio direcamente en el mapa (opción 7 en el menú)
 El programa tiene la opción de buscar asegurados por nombre direcamente en el mapa (opción 8 en el menú)
 El programa genera archivos ordenados por nombre, edad o folio (opción 4, 5 y 6 en el menú)
 
 
-#### Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa. Usar de manera
+### Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa. Usar de manera
 
 Los asegurados están registrados en el archivo asegurados.txt de donde se leen al iniciar el programa.
 
-#### Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa. 
+### Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa. 
 
 Las asegurados se guardan al en archivos .txt con el nombre que ingreso el usuario.
 
