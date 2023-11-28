@@ -28,12 +28,12 @@ Use este sort porque es rápido en la mayoría de los casos y porque me permite 
 
 ### Análisis de complejidad correcto y completo para todo el programa y sus compenetes,
 ### Estructura de datos
-##### vector asegurados
+#### vector asegurados
 
 función de acceso por valor: O(n) por que para llegar a el aseguradop tengo que recorrer el vector y comparar cada valor.
 funcion de inserción: O(1) siempre uso push back.
 
-##### mapa asegurados_nom y asegurados_fol
+#### mapa asegurados_nom y asegurados_fol
 
 función de acceso por valor: O(1) para llegar a el solo necesito el key value
 funcion de inserción: O(n) uso un ciclo for.
@@ -43,39 +43,39 @@ funcion de inserción: O(n) uso un ciclo for.
 ordenamiento con sort c++: El sort de C++ muestra una complejudad de O(N·log(N)) 
 
 ### Funciones Menú (main)
-##### Importar_asegurados (Lectura desde Archivo):
+#### Importar_asegurados (Lectura desde Archivo):
 Complejidad Temporal: O(n) (donde n es el número de asegurados en el archivo)
 Justificación: Lee cada línea del archivo una vez y crea objetos Asegurado, agregándolos al vector y a los mapas.
 
-##### Mostrar_asegurados:
+#### Mostrar_asegurados:
 Complejidad Temporal: O(n) (recorre el vector de asegurados una vez)
 Justificación: Muestra los asegurados en el formato deseado.
 
-##### Editar_edad:
+#### Editar_edad:
 Complejidad Temporal: O(n) (recorre el vector de asegurados una vez en el peor caso)
 Justificación: Busca el asegurado por nombre y modifica su edad.
 
-##### Agrega_asegurado:
+#### Agrega_asegurado:
 Complejidad Temporal: O(1) (agrega un elemento al final del vector)
 Justificación: Agrega un nuevo asegurado al vector.
 
-##### Ordenamiento por Nombre (compara_alf):
+#### Ordenamiento por Nombre (compara_alf):
 Complejidad Temporal: O(n log n) (donde n es el número de asegurados)
 Justificación: Utiliza el algoritmo de ordenamiento rápido (sort) de la STL de C++, cuya complejidad promedio es O(n log n).
 
-##### Ordenamiento por Edad (compara_ed):
+#### Ordenamiento por Edad (compara_ed):
 Complejidad Temporal: O(n log n)
 Justificación: También utiliza el algoritmo de ordenamiento rápido (sort), cuya complejidad promedio es O(n log n).
 
-##### Ordenamiento por Folio (compara_fol):
+#### Ordenamiento por Folio (compara_fol):
 Complejidad Temporal: O(n log n)
 Justificación: Igualmente, utiliza el algoritmo de ordenamiento rápido (sort), con complejidad promedio O(n log n).
 
-##### Buscar_folio:
+#### Buscar_folio:
 Complejidad Temporal: O(1) (acceso directo a través del mapa)
 Justificación: Busca el nombre de un asegurado por su folio.
 
-##### Buscar_nombre:
+#### Buscar_nombre:
 Complejidad Temporal: O(1)
 Justificación: Busca el folio de un asegurado por su nombre.
 
