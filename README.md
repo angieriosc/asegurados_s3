@@ -40,7 +40,7 @@ funcion de inserción: O(n) uso un ciclo for.
 
 #### Ordenamiento dentro del programa
 
-ordenamiento con sort c++: El sort de C++ muestra una complejudad de O(N·log(N)) 
+ordenamiento con sort c++: El sort de C++ muestra una complejidad de O(N·log(N)) 
 
 ### Funciones Menú (main)
 #### Importar_asegurados (Lectura desde Archivo):
