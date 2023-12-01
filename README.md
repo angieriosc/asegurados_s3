@@ -97,4 +97,5 @@ Los asegurados están registrados en el archivo asegurados.txt de donde se leen 
 Las asegurados se guardan al en archivos .txt con el nombre que ingreso el usuario.
 
 ## Complejidad Final del Programa
-La complejidad del programa está dominada principalmente por las operaciones de lectura y escritura en archivos y por la ordenación de los asegurados. En general, se puede decir que la complejidad total es O(n log n), donde n es el número total de asegurados. Las operaciones individuales como la edición de edad, búsqueda por folio o nombre tienen complejidades más bajas, contribuyendo menos al tiempo total de ejecución.
+La complejidad del programa está dominada principalmente por las operaciones de lectura y escritura en archivos y por la ordenación de los asegurados. En general, se puede decir que en el caso de que el usuario elija todas las opciones y luego salga del program la complejidad total será de
+O(3n log n), donde n es el número total de asegurados. Las operaciones individuales como la edición de edad, búsqueda por folio o nombre tienen complejidades más bajas, contribuyendo menos al tiempo total de ejecución.
